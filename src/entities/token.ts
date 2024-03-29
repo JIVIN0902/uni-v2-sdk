@@ -2,6 +2,7 @@ import invariant from 'tiny-invariant'
 import { ChainId } from '../constants'
 import { validateAndParseAddress } from '../utils'
 import { Currency } from './currency'
+import config from 'config'
 
 /**
  * Represents an ERC20 token with a unique address and some metadata.
@@ -59,9 +60,9 @@ export function currencyEquals(currencyA: Currency, currencyB: Currency): boolea
 export const WETH = {
   [ChainId.MAINNET]: new Token(
     ChainId.MAINNET,
-    '0xEb54dACB4C2ccb64F8074eceEa33b5eBb38E5387',
-    18,
-    'WDEGEN',
-    'Wrapped DEGEN'
+    config.WRAPPED_NATIVE_ADDRESS,
+    config.WRAPPED_NATIVE_DECIMALS,
+    config.WRAPPED_NATIVE_SYMBOL,
+    config.WRAPPED_NATIVE_NAME
   )
 }
